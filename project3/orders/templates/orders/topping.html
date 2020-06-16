@@ -1,0 +1,78 @@
+{% extends "orders/base.html" %}
+{% block title %}
+Add toppings
+{% endblock %}
+{% block body %}
+
+<h1>Add toppings to pizza</h1>
+<ul><li><a href="{% url 'cart' %}"><button>View your Cart</button></a></li>
+<li><a href="{% url 'index' %}"><button>Home</button></a></li></ul>
+<table>
+<tr>
+       		<th>Category</th>
+            <th>Meal</th>
+            <th>Price</th>
+            <th>ADD Topping</th>
+            <th>Time added</th>
+  
+       	</tr>
+       	{% for item in CartItems %} 
+        {% if item.category == "Regular Pizza" %} 
+       	<tr><form action="{% url 'now_add_topping'  %}" method="post">
+       		{% csrf_token %}
+     	<td><select name="item_id"> <option value="{{ item.id }}">{{ item.category }}</option></select></td>
+     	<td><select name="dressing"> <option value="{{ item.dressing }}">{{ item.dressing }}</option></select></td>
+     	<td>${{ item.price }}</td>
+     	{% if item.dressing == "Cheese" %}
+     	<td> No topping to add.</td>
+     	{% elif item.dressing == "1 topping" %}
+        <td><ul>{% for topping in item.toppings.all %} 
+        	<li>{{ topping }}</li>
+        	{% empty %}
+        	<li>Random topping.</li>
+     		{% endfor %}</ul>
+     		<select name="topping">
+     	{% for i in Toppings %}
+                <option value="{{ i.topping_name }}">{{ i.topping_name }}</option>
+              {% endfor %}</select> <input type="submit" value="Add topping" /></td>
+              {% elif item.dressing == "2 toppings" %}
+        <td><ul>{% for topping in item.toppings.all %} 
+        	<li>{{ topping }}</li>
+        	{% empty %}
+        	<li>Random toppings.</li>
+     		{% endfor %}</ul>
+     		<select name="topping">
+     	{% for i in Toppings %}
+                <option value="{{ i.topping_name }}">{{ i.topping_name }}</option>
+              {% endfor %}</select> <input type="submit" value="Add topping" /></td>
+          {% elif item.dressing == "3 toppings" %}
+        <td><ul>{% for topping in item.toppings.all %} 
+        	<li>{{ topping }}</li>
+        	{% empty %}
+        	<li>Random toppings.</li>
+     		{% endfor %}</ul>
+     		<select name="topping">
+     	{% for i in Toppings %}
+                <option value="{{ i.topping_name }}">{{ i.topping_name }}</option>
+              {% endfor %}</select> <input type="submit" value="Add topping" /></td>
+
+              {% else %}
+        <td><ul>{% for topping in item.toppings.all %} 
+        	<li>{{ topping }}</li>
+        	{% empty %}
+        	<li>Random toppings.</li>
+     		{% endfor %}</ul>
+     		<select name="topping">
+     	{% for i in Toppings %}
+                <option value="{{ i.topping_name }}">{{ i.topping_name }}</option>
+              {% endfor %}</select> <input type="submit" value="Add topping" /></td>
+
+              {% endif %}
+              <td>{{ item.created_at }}</td>
+          </form></tr>
+          {% else %}
+          <tr> </tr>
+          {% endif %}
+          {% endfor %}
+   </table>   
+{% endblock %}

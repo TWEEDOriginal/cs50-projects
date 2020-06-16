@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Success!
+{% endblock %}
+
+{% block body %}
+    <h1>Success!</h1>
+
+    You have successfully registered an account.
+     <div class="form-group">
+    <p> please click the button below to login into your account.</p>
+    <a href="{{ url_for('login') }}"><button class="btn btn-primary">Login</button></a>
+        </div>
+{% endblock %}

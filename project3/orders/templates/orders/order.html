@@ -1,0 +1,39 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+    Success
+{% endblock %}
+
+{% block body %}
+    <h1>Success</h1>
+
+    {{ message }}
+
+    <hr>
+
+    <a href="{% url 'index' %}">Return to Menu page.</a>
+<table>
+       	<tr>
+       		<th>Token</th>
+            <th>Category</th>
+            <th>Meal</th>
+            <th>Price</th>
+            <th>Toppings</th>
+            <th>Time ordered</th>   
+       	</tr>
+
+       	{% for item in OrderItems %} 
+       	 <tr>
+       	 	<td>{{ item.token }}</td>
+       	 	<td>{{ item.category }}</td>
+       	 	<td>{{ item.dressing }}</td>
+       	 	<td>{{ item.price }}</td>
+       	 	<td>{{ item.topping }}</td>
+       	 	<td>{{ item.time_of_order }}</td>
+       	 </tr>
+       	 {% endfor %}
+      </table>
+
+      <p> Total : {{ Total }} </p>
+
+{% endblock %}

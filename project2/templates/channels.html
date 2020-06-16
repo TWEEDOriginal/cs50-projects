@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of channels</title>
+        <style>
+            li {
+                line-height: 30px;
+            }
+        
+        </style>
+     
+        
+      
+    </head>
+    <body>
+    	<p>Create Channel</p>
+    	<form class="form-inline" action="{{ url_for('channels') }}" method="post">
+        <input id="channel" type="text" name = "channel" placeholder="Input channel name">
+        <button id="create">Create</button>
+        </form>
+        <h3> {{ message }}  </h3>
+        <h1>List of channels</h1>>
+        <ul id="list_of_channels">
+        	 {% for ch in channels_created %}
+        	 <form>
+          <li><a href="{{ url_for('channel_page') }" name = "ch">{{ ch }} </a></li>
+        {% endfor %}
+    </form>
+        </ul>
+    </body>
+</html>

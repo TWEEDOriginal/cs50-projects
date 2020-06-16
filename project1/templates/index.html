@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book review website
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome to my book review website</h1>
+        <div class="form-group">
+    	    <h2>Register for bookreview.com to get reviews for your favorite books.</h2>
+            <a href="{{ url_for('register') }}"><button class="btn btn-primary">Sign up</button></a>
+        </div>
+    
+        <div class="form-group">
+    	    <h2>Already have an ACCOUNT</h2>
+            <a href="{{ url_for('login') }}"><button class="btn btn-primary">LOGIN</button></a>
+        </div>
+   
+    {% endblock %}

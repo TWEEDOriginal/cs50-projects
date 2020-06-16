@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book
+{% endblock %}
+
+{% block body %}
+    <h1>Bookreview.com</h1>
+    You are logged into bookreview.com as {{ username }} 
+    <div>
+    <h1>Book Details</h1>
+
+    <ul>
+        <li>Title: {{ book.title }}</li>
+        <li>Author: {{ book.author }}</li>
+        <li>Publication Year: {{ book.year }} </li>
+        <li>ISBN number: {{ book.isbn }} </li>
+    </ul>
+   </div>
+   <h2>Reviews</h2>
+    <ul>
+        {% for pre_review in pre_reviews %}
+            <li>{{ pre_review.review }} with a rating of {{ pre_review.rating }} </li>
+        {% else %}
+            <li>No reviews.</li>
+        {% endfor %}
+    </ul>
+    <h3>Goodreads.com rating</h3>
+    <ul>
+    	<li>Average Ratings on the site is {{ average_rating }}</li>
+    	<li>Number of ratings is {{ work_ratings_count }}</li>
+    </ul>
+    <form action="{{ url_for('book_review') }}" method="post">
+
+        <div class="form-group">
+            <textarea class="form-control" name="review" rows="10" cols="50" placeholder="Please type in a review"></textarea>
+        </div>
+           <p> {{ message1 }} </p>
+      {% for rating in range(1,6) %} 
+         <input name="rating" type="radio" value="{{ rating }}"> {{ rating }}
+          {% endfor %}
+            <p> {{ message2 }} </p>
+        <div class="form-group">
+            <button class="btn btn-primary">Submit review</button>
+        </div>
+
+    </form>
+   <a href="{{ url_for('logout') }}"><button class="btn btn-primary">Logout</button></a>
+{% endblock %}

@@ -139,10 +139,9 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 if DEBUG:
     #TEST KEY
     
-    STRIPE_SECRET_KEY = 'sk_test_51GrTKfFi7NZQwJjYgN2QyfPFzxXr1wvpkGyN6miDTZiS8wiSYxAjRK9WdUzuc6ujb7rTPqd1nIJ88ov5kc2TpXYQ00Z1lcuxQC'
-
+    STRIPE_SECRET_KEY = ''
 else:
-    STRIPE_SECRET_KEY = 'sk_test_51GrTKfFi7NZQwJjYgN2QyfPFzxXr1wvpkGyN6miDTZiS8wiSYxAjRK9WdUzuc6ujb7rTPqd1nIJ88ov5kc2TpXYQ00Z1lcuxQC' 
+    STRIPE_SECRET_KEY = '' 
 
 
 
